@@ -1,0 +1,110 @@
+﻿@model APPTest.Models.Produit
+
+@{
+    ViewData["Title"] = "Create";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="stylesheet" href="/css/product.css" />
+
+</head>
+<header class="header_section">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="">
+                
+            </a>
+            <div class="d-flex   flex-column flex-lg-row  ">
+                <ul class="navbar-nav  ">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Create"> Add Product </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Cart"> Cart </a>
+                    </li>
+                    <li class="nav-item">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+
+
+
+<body>
+    <div class="container">
+        <input type="checkbox" id="flip">
+       
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Add a new product</div>
+                    @* ---------------------------------------- CREATE FORM  ------------------------------------------------- *@
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fa-solid fa-braille"></i>
+                                <input asp-for="Title" placeholder="Title" required>
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <input asp-for="ReleaseDate" placeholder="Date de sortie" required>
+                                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                     
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fa-solid fa-money-bill-1-wave"></i>
+                                <input asp-for="Price" placeholder="Price" required>
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                      
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fa-solid fa-image"></i>
+                                <input asp-for="ImageFile" type="file" name="ImageFile" required>
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="button input-box">
+                            <input type="submit" value="Create">
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+
